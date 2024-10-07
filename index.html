@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+            till:'rgba(14, 122, 129, 0.1)',
+            close:'rgb(14, 122, 129)',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="">
+     <nav>
+        <div class="navbar bg-base-100">
+            <div class="navbar-start">
+              <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 6h16M4 12h8m-8 6h16" />
+                  </svg>
+                </div>
+                <ul
+                  tabindex="0"
+                  class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                  <li><a>Item 1</a></li>
+                  <li>
+                    <a>Parent</a>
+                    <ul class="p-2">
+                      <li><a>Submenu 1</a></li>
+                      <li><a>Submenu 2</a></li>
+                    </ul>
+                  </li>
+                  <li><a>Item 3</a></li>
+                </ul>
+              </div>
+              <a class="btn btn-ghost text-xl"> <img src="./assets/logo.webp"> Peddy</a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+              <ul class="menu menu-horizontal px-1">
+                <li><a>Home</a></li>
+                <li>
+                  <a href="">Shop</a>
+                </li>
+                <li><a>Contact</a></li>
+              </ul>
+            </div>
+            <div class="navbar-end">
+              <a class="btn">Button</a>
+            </div>
+          </div>
+
+     </nav>
+      <main class="mx-auto px-0 container mt-10 p-5" >
+        <div class="flex flex-col  justify-center items-center">
+            <p class="mb-6 mt-4">Bringing Families Together ❤️‍🔥 </p>
+            <h1 class="text-7xl font-extrabold pb-4">Your Path to Adoption </h1> 
+            <h1 class="text-7xl font-extrabold pb-4">Starts Here</h1>
+            <p class="my-3">It is a long established fact that a reader will be distracted by the readable content of a page when looking </p>
+            <p> at its layout. The point of using Lorem Ipsum is that it has a.</p>
+       <button class="btn bg-[#0E7A81] text-white my-4">View More</button>
+       <img src="./assets/pet.webp" alt="" class="my-5">
+        </div>
+
+
+        <div class="flex flex-col justify-between items-center">
+            <h1 class="lg:text-[40px] font-extrabold mb-6">Adopt  Your  Best Friend</h1>
+            <p class="font-normal text-sm mb-12"> It is a long established fact that a reader will be distracted by the readable content of a <br> page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+        </div>
+        <div id="category" class="grid grid-cols-2 lg:grid-cols-4 px-4"></div>
+         <div class="flex justify-between items-center">
+            <p class="font-extrabold text-4xl">Best Deals For You</p>
+            <button class="btn bg-[#0E7A81] text-white font-medium mt-4" onclick="sort()">Sort By Price</button>
+
+         </div>
+       
+         <span class="loading loading-bars loading-lg hidden " id="spin"></span>
+        <div class="grid grid-cols-4 ">
+            
+            <div class="col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-7 gap-3 mt-[120px]" id="card">
+                
+            </div>
+            <div class="col-span-1  p-7 rounded mt-[120px]" >
+              <div id="selected_container" class="grid grid-cols-2 gap-2">
+
+              </div>
+          
+            </div>
+        </div>
+   
+<dialog id="detail_modal">
+ 
+</dialog>
+<dialog id="adopt_modal">
+ <div class="countdown-container">
+
+ </div>
+</dialog>
+      </main>
+
+      <footer class="flex lg:flex-row flex-col justify-between items-center bg-black p-20 text-white">
+        <div class="w-[30%]">
+            <h1 class="text-white font-extrabold text-3xl flex justify-start gap-2"><img src="./assets/logo.webp" alt="">Peddy</h1>
+            <p class="font-medium text-lg text-[rgba(255, 255, 255, 0.9)]">Location: av. Washington 165, NY CA 54003<br>
+                Phone: +31 85 964 47 25 <br>
+                Email: info@yourdomain.com <br>
+                Openings hours: 9.00 AM - 5.00 PM</p>
+        </div>
+
+        <div class="flex justify-between items-center w-[40%]">
+            <div >
+              <h2 class="font-bold text-lg mb-2">Useful Links</h2>
+              <h5>Home</h5>
+              <h5>About Us</h5>
+              <h5>Animals</h5>
+              <h5>Foundation</h5>
+              <h5>Contact</h5>
+            </div>
+            <div>
+                <h1>Drop a Message</h1>
+                <input type="email" placeholder="email" class="input input-bordered bg-[rgba(255, 255, 255, 0.05)]" required />
+            </div>
+        </div>
+
+      </footer>
+    
+      <script src="./script.js"></script>
+</body>
+</html>
