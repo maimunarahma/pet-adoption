@@ -46,6 +46,7 @@ const show_pets = async (category) => {
 const pet_card = (data) => {
 
   console.log(data)
+
   const cards = document.getElementById("card");
   cards.innerHTML = ""
   if (Array.isArray(data) && data.length > 0) {
@@ -78,7 +79,7 @@ const pet_card = (data) => {
   </div>
 </div>
         `
-
+  
       cards.appendChild(div)
     });
   }
@@ -166,19 +167,53 @@ const sort = async () => {
   const data = await response.json();
   console.log(data.pets[0].price)
   const prices = [];
+  let pets=data.pets;
   for (let i = 1; i < 17; i++) {
-    //   prices.push(data.pets[i].price)
-    if (data.pets[i].price > data.pets[i - 1].price) {
+      prices.push(data.pets[i].price)
+    // if (data.pets[i].price > p1) {
       console.log(data.pets[i - 1].price)
     }
-    // else{
-    //     console.log(data.pets[i].price)
-    // }
+    
 
-
-  }
+  
   console.log(prices)
-  prices.sort((a, b) => b - a);
+  pets.sort((a, b) => a.price-b.price);
+   pets.forEach((pet)=>{
+    console.log(`Name: ${pet.pet_name}, Price: ${pet.price}`);
+   })
+   document.getElementById("card").innerHTML="";
+   const sorted=document.getElementById("card");
+   
+   pets.forEach((pet)=>{
+    const new_card=document.createElement("div")
+   new_card.innerHTML=`
+          <div class="card  border-2 rounded-lg p-3">
+  <figure>
+    <img
+      src="${pet.image}"
+      alt="Shoes" />
+  </figure>
+  <div class="py-3">
+    <h2 class="card-title font-bold text-lg">${pet.pet_name}</h2>
+    <p><i class="fa-regular fa-square-minus "></i> Breed: ${(pet.breed === undefined || pet.breed === null) ? "Not Available" : pet.breed}</p>
+     <p><i class="fa-solid fa-calendar-days"></i> Birth: ${(pet.date_of_birth === undefined || pet.date_of_birth === null) ? "Not Available" : pet.date_of_birth}</p>
+     <p><i class="fa-solid fa-venus-mars"></i>    Gender: ${(pet.gender === undefined || pet.gender === null) ? "Not Available" : pet.gender}</p>
+      <p><i class="fa-solid fa-tag"></i>          Price: ${(pet.price === undefined || pet.price === null) ? "Not Available" : pet.price}</p>
+     
+     <div class="mt-6 flex justify-between items-center p-3">
+     <button class="btn rounded-full like" onclick="liked_pet('${pet.image}')"><i class="fa-regular fa-thumbs-up"></i></button>
+   <div class="flex justify-between items-center gap-3">  <button class="btn rounded" onclick="adopted()"  >Adopt</button>
+   <button class="btn rounded" id="details" onclick="description('${pet.petId}')">Details</button>
+   </div>
+     </div> 
+    </div>
+  </div>
+</div>
+       
+   `
+   sorted.appendChild(new_card)
+   })
+
 }
 
 
