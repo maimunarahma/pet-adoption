@@ -72,36 +72,38 @@
           </div>
 
      </nav>
-      <main class="mx-auto px-0 container mt-10 p-5" >
+      <main class="mx-auto px-0 container mt-10 " >
         <div class="flex flex-col  justify-center items-center">
             <p class="mb-6 mt-4">Bringing Families Together ❤️‍🔥 </p>
-            <h1 class="text-7xl font-extrabold pb-4">Your Path to Adoption </h1> 
-            <h1 class="text-7xl font-extrabold pb-4">Starts Here</h1>
-            <p class="my-3">It is a long established fact that a reader will be distracted by the readable content of a page when looking </p>
-            <p> at its layout. The point of using Lorem Ipsum is that it has a.</p>
+            <h1 class="lg:text-7xl font-extrabold pb-4">Your Path to Adoption </h1> 
+            <h1 class="lg:text-7xl font-extrabold pb-4">Starts Here</h1>
+            <p class="my-3 p-4">It is a long established fact that a reader will be distracted by the readable content of a page when looking 
+           at its layout. The point of using Lorem Ipsum is that it has a.</p>
        <button class="btn bg-[#0E7A81] text-white my-4">View More</button>
        <img src="./assets/pet.webp" alt="" class="my-5">
         </div>
 
 
-        <div class="flex flex-col justify-between items-center">
+        <div class="flex flex-col justify-between items-center mx-auto">
             <h1 class="lg:text-[40px] font-extrabold mb-6">Adopt  Your  Best Friend</h1>
-            <p class="font-normal text-sm mb-12"> It is a long established fact that a reader will be distracted by the readable content of a <br> page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+            <p class="font-normal text-sm mb-12 p-4"> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
         </div>
-        <div id="category" class="grid grid-cols-2 lg:grid-cols-4 px-4"></div>
-         <div class="flex justify-between items-center">
-            <p class="font-extrabold text-4xl">Best Deals For You</p>
+        <div id="category" class="grid grid-cols-2 lg:grid-cols-4 px-4 gap-2"></div>
+         <div class="flex justify-between items-center w-[80%] mx-auto mt-5">
+            <p class="font-extrabold lg:text-4xl">Best Deals For You</p>
             <button class="btn bg-[#0E7A81] text-white font-medium mt-4" onclick="sort()">Sort By Price</button>
 
          </div>
-       
-         <span class="loading loading-bars loading-lg hidden " id="spin"></span>
+        <div class=" w-[30%] mx-auto">
+          <div class="loading loading-bars loading-lg hidden p-10 " id="spin"></div>
+        </div>
+        
         <div class="grid grid-cols-4 ">
             
-            <div class="col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-7 gap-3 mt-[120px]" id="card">
+            <div class="col-span-4 lg:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-7 gap-3 mt-[120px]" id="card">
                 
             </div>
-            <div class="col-span-1  p-7 rounded mt-[120px]" >
+            <div class="col-span-4 lg:col-span-1  p-7 rounded mt-[120px]" >
               <div id="selected_container" class="grid grid-cols-2 gap-2">
 
               </div>
@@ -119,7 +121,7 @@
 </dialog>
       </main>
 
-      <footer class="flex lg:flex-row flex-col justify-between items-center bg-black p-20 text-white">
+      <footer class="flex lg:flex-row flex-col justify-between items-center bg-black lg:p-20 text-white">
         <div class="w-[30%]">
             <h1 class="text-white font-extrabold text-3xl flex justify-start gap-2"><img src="./assets/logo.webp" alt="">Peddy</h1>
             <p class="font-medium text-lg text-[rgba(255, 255, 255, 0.9)]">Location: av. Washington 165, NY CA 54003<br>

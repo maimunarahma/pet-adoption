@@ -19,7 +19,7 @@ const display_btns = async (pets) => {
     btn.classList.add = ("btn");
     console.log(pet.category)
     btn.innerHTML = `
-      <button class="flex justify-between items-center w-[50%] lg:w-[35%] border-2 p-3 rounded-md text-xl font-bold" onclick="spinner('${pet.category}')" id="pet_type"><img src="${pet.category_icon}" class="w-[30%]">${pet.category}</button>
+      <button class="flex justify-center gap-2 items-center w-[70%] p-2 lg:w-[35%] border-2  rounded-md text-xl font-bold" onclick="spinner('${pet.category}')" id="pet_type"><img src="${pet.category_icon}" class="w-[30%]">${pet.category}</button>
      `
     container.appendChild(btn)
   })
@@ -71,8 +71,8 @@ const pet_card = (data) => {
      
      <div class="mt-6 flex justify-between items-center p-3">
      <button class="btn rounded-full like" onclick="liked_pet('${x.image}')"><i class="fa-regular fa-thumbs-up"></i></button>
-   <div class="flex justify-between items-center gap-3">  <button class="btn rounded" onclick="adopted()"  >Adopt</button>
-   <button class="btn rounded" id="details" onclick="description('${x.petId}')">Details</button>
+   <div class="flex justify-between items-center gap-3">  <button class="btn rounded  text-[#0E7A81] adopt" onclick="adopted(this)" id=""  >Adopt</button>
+   <button class="btn rounded text-[#0E7A81]" id="details" onclick="description('${x.petId}')">Details</button>
    </div>
      </div> 
     </div>
@@ -108,6 +108,7 @@ const liked_pet = (image) => {
   const img = document.createElement("img");
   console.log(image)
   img.src = image;
+  img.classList.add("rounded")
   p.appendChild(img)
 
 }
@@ -146,8 +147,8 @@ const display_all_pets = (pets) => {
              
              <div class="mt-6 flex justify-between items-center p-3">
              <button class="btn rounded-full like" onclick="liked_pet('${p.image}')"><i class="fa-regular fa-thumbs-up"></i></button>
-           <div class="flex justify-between items-center gap-3">  <button class="btn rounded" onclick="adopted()" >Adopt</button>
-           <button class="btn rounded"  onclick="description('${p.petId}')" >Details</button>
+           <div class="flex justify-between items-center gap-3">  <button class="btn rounded text-[#0E7A81] adopt" onclick="adopted(this)" id=""  >Adopt</button>
+           <button class="btn rounded text-[#0E7A81]"  onclick="description('${p.petId}')" >Details</button>
            </div>
              </div> 
             </div>
@@ -202,8 +203,8 @@ const sort = async () => {
      
      <div class="mt-6 flex justify-between items-center p-3">
      <button class="btn rounded-full like" onclick="liked_pet('${pet.image}')"><i class="fa-regular fa-thumbs-up"></i></button>
-   <div class="flex justify-between items-center gap-3">  <button class="btn rounded" onclick="adopted()"  >Adopt</button>
-   <button class="btn rounded" id="details" onclick="description('${pet.petId}')">Details</button>
+   <div class="flex justify-between items-center gap-3">  <button class="btn rounded text-[#0E7A81] adopt" onclick="adopted(this)" id="" >Adopt</button>
+   <button class="btn rounded text-[#0E7A81]" id="details" onclick="description('${pet.petId}')">Details</button>
    </div>
      </div> 
     </div>
@@ -260,12 +261,13 @@ const description = async (id) => {
 
 }
 
-const adopted = async () => {
+const adopted = async (button) => {
   const x = document.getElementById("adopt_modal");
   x.innerHTML = '';
   x.showModal();
 
   const div = document.createElement("div");
+  
   div.innerHTML = `
                 <div class="modal-box flex flex-col justify-between items-center">
                     <h1 class="text-5xl font-extrabold">Congrats!</h1>
@@ -292,7 +294,10 @@ const adopted = async () => {
     if (counter <= 0) {
       clearInterval(intervalId);
       x.close();
-      document.getElementById("details").disabled=true;
+      button.disabled=true;
+      button.innerText="Adopted"
     }
   }, 1000);
+ 
+
 }
