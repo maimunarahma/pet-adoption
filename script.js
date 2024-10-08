@@ -1,10 +1,17 @@
 
 
 const buttons = async () => {
-  const response = await fetch(`https://openapi.programming-hero.com/api/peddy/categories`);
-  const data = await response.json();
-  display_btns(data.categories);
-  console.log(data.categories)
+
+  try {
+    const response = await fetch(`https://openapi.programming-hero.com/api/peddy/categories`);
+    const data = await response.json();
+    display_btns(data.categories);
+    console.log(data.categories)
+  }
+
+  catch(error){
+         console.error('Error Find: ',error);
+  }
   // pets[0].category
 }
 buttons();
@@ -26,11 +33,12 @@ const display_btns = async (pets) => {
 }
 
 const spinner = (category) => {
-
+  
   document.getElementById("spin").style.display = "block";
   show_pets(category)
 }
 const show_pets = async (category) => {
+   try{
   setTimeout(async () => {
     document.getElementById("spin").style.display = "none";
     console.log(category)
@@ -40,7 +48,10 @@ const show_pets = async (category) => {
     console.log(data.data)
     pet_card(data.data)
   }, 2000)
-
+   }
+    catch(error){
+      console.log("error find :",error);
+    }
 }
 
 const pet_card = (data) => {
@@ -50,6 +61,7 @@ const pet_card = (data) => {
   const cards = document.getElementById("card");
   cards.innerHTML = ""
   if (Array.isArray(data) && data.length > 0) {
+    cards.classList.add("grid")
 
     data.forEach((x) => {
       const div = document.createElement("div");
@@ -79,16 +91,17 @@ const pet_card = (data) => {
   </div>
 </div>
         `
-  
+
       cards.appendChild(div)
     });
   }
   else {
     console.log("No data or empty array, showing error message");
-    const div = document.createElement("div")
+    const div = document.createElement("div");
+    cards.classList.remove("grid")
     div.innerHTML = `
-            <div class="  bg-[rgba(19, 19, 19, 0.03)]">
-            <div class="flex flex-col justify-between items-center">
+            <div class="  bg-[#13131308]/30 w-[90%] p-10 py-20">
+            <div class="flex flex-col justify-center items-center">
             <img src="./assets/error.webp" alt="">
             <p class="text-3xl font-bold">No Information Available</p>
             <p class="text-lg font-medium ">It is a long established fact that a reader will be distracted by the readable content of a page when looking at 
@@ -114,11 +127,16 @@ const liked_pet = (image) => {
 }
 
 const all_pets = async () => {
+   try{
   const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
   const data = await response.json();
   console.log(data.pets)
   document.getElementById("spin").style.display = "block";
   display_all_pets(data.pets);
+   }
+  catch(error){
+    console.log("error found ",error)
+  }
 }
 
 const display_all_pets = (pets) => {
@@ -164,30 +182,34 @@ const display_all_pets = (pets) => {
 all_pets();
 
 const sort = async () => {
+  
   const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
   const data = await response.json();
   console.log(data.pets[0].price)
   const prices = [];
-  let pets=data.pets;
+  let pets = data.pets;
   for (let i = 1; i < 17; i++) {
-      prices.push(data.pets[i].price)
+    prices.push(data.pets[i].price)
     // if (data.pets[i].price > p1) {
-      console.log(data.pets[i - 1].price)
-    }
-    
+    console.log(data.pets[i - 1].price)
+  }
 
+    
   
+
+
+
   console.log(prices)
-  pets.sort((a, b) => a.price-b.price);
-   pets.forEach((pet)=>{
+  pets.sort((a, b) => a.price - b.price);
+  pets.forEach((pet) => {
     console.log(`Name: ${pet.pet_name}, Price: ${pet.price}`);
-   })
-   document.getElementById("card").innerHTML="";
-   const sorted=document.getElementById("card");
-   
-   pets.forEach((pet)=>{
-    const new_card=document.createElement("div")
-   new_card.innerHTML=`
+  })
+  document.getElementById("card").innerHTML = "";
+  const sorted = document.getElementById("card");
+
+  pets.forEach((pet) => {
+    const new_card = document.createElement("div")
+    new_card.innerHTML = `
           <div class="card  border-2 rounded-lg p-3">
   <figure>
     <img
@@ -212,8 +234,8 @@ const sort = async () => {
 </div>
        
    `
-   sorted.appendChild(new_card)
-   })
+    sorted.appendChild(new_card)
+  })
 
 }
 
@@ -267,7 +289,7 @@ const adopted = async (button) => {
   x.showModal();
 
   const div = document.createElement("div");
-  
+
   div.innerHTML = `
                 <div class="modal-box flex flex-col justify-between items-center">
                     <h1 class="text-5xl font-extrabold">Congrats!</h1>
@@ -294,10 +316,10 @@ const adopted = async (button) => {
     if (counter <= 0) {
       clearInterval(intervalId);
       x.close();
-      button.disabled=true;
-      button.innerText="Adopted"
+      button.disabled = true;
+      button.innerText = "Adopted";
     }
   }, 1000);
- 
+
 
 }
