@@ -2,7 +2,7 @@
 <p align="center">This project is Pet Adoption website designed to provide a smooth and user-friendly experience for users looking to adopt his/her favourite pet. The site uses HTML, CSS, JavaScript with DOM manipulation and JasvaScript API to dynamically update the page based on user input."</p>
 
 <p align="center">
-<a href="https://pets-house.netlify.app/">📱Live Link of This Project</a>
+<a href="">📱Live Link of This Project</a>
 </p> 
 
 <h2 id="layout">🎨Advanced Features</h2>
