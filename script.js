@@ -184,7 +184,14 @@ const display_all_pets = (pets) => {
 all_pets();
 
 const sort = async () => {
+  document.getElementById("spin").style.display = "block";
+     document.getElementById("card").innerText=""
+  setTimeout(()=>{
+    document.getElementById("spin").style.display = "none";
+   
+  },2000)
 
+ try{
   const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
   const data = await response.json();
   console.log(data.pets[0].price)
@@ -202,7 +209,7 @@ const sort = async () => {
 
 
   console.log(prices)
-  pets.sort((a, b) => a.price - b.price);
+  pets.sort((a, b) => b.price - a.price);
   pets.forEach((pet) => {
     console.log(`Name: ${pet.pet_name}, Price: ${pet.price}`);
   })
@@ -238,13 +245,16 @@ const sort = async () => {
    `
     sorted.appendChild(new_card)
   })
-
+ }
+ catch(error){
+  console.log("error found",error)
+ }
 }
 
 
 
 const description = async (id) => {
-
+ try{
   const x = document.getElementById("detail_modal");
   detail_modal.showModal();
   console.log(id)
@@ -283,6 +293,10 @@ const description = async (id) => {
             `
   x.appendChild(modal)
 
+}
+catch(error){
+  console.log("error found",error)
+}
 }
 
 const adopted = async (id) => {
