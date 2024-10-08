@@ -9,8 +9,8 @@ const buttons = async () => {
     console.log(data.categories)
   }
 
-  catch(error){
-         console.error('Error Find: ',error);
+  catch (error) {
+    console.error('Error Find: ', error);
   }
   // pets[0].category
 }
@@ -33,25 +33,25 @@ const display_btns = async (pets) => {
 }
 
 const spinner = (category) => {
-  
+
   document.getElementById("spin").style.display = "block";
   show_pets(category)
 }
 const show_pets = async (category) => {
-   try{
-  setTimeout(async () => {
-    document.getElementById("spin").style.display = "none";
-    console.log(category)
-    const response = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
-    const data = await response.json();
+  try {
+    setTimeout(async () => {
+      document.getElementById("spin").style.display = "none";
+      console.log(category)
+      const response = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
+      const data = await response.json();
 
-    console.log(data.data)
-    pet_card(data.data)
-  }, 2000)
-   }
-    catch(error){
-      console.log("error find :",error);
-    }
+      console.log(data.data)
+      pet_card(data.data)
+    }, 2000)
+  }
+  catch (error) {
+    console.log("error find :", error);
+  }
 }
 
 const pet_card = (data) => {
@@ -83,7 +83,8 @@ const pet_card = (data) => {
      
      <div class="mt-6 flex justify-between items-center p-3">
      <button class="btn rounded-full like" onclick="liked_pet('${x.image}')"><i class="fa-regular fa-thumbs-up"></i></button>
-   <div class="flex justify-between items-center gap-3">  <button class="btn rounded  text-[#0E7A81] adopt" onclick="adopted(this)" id=""  >Adopt</button>
+   <div class="flex justify-between items-center gap-3">
+     <button class="btn rounded text-[#0E7A81] adopt" onclick="adopted(${x.petId})" id="adopt-${x.petId}" >Adopt</button>
    <button class="btn rounded text-[#0E7A81]" id="details" onclick="description('${x.petId}')">Details</button>
    </div>
      </div> 
@@ -127,15 +128,15 @@ const liked_pet = (image) => {
 }
 
 const all_pets = async () => {
-   try{
-  const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
-  const data = await response.json();
-  console.log(data.pets)
-  document.getElementById("spin").style.display = "block";
-  display_all_pets(data.pets);
-   }
-  catch(error){
-    console.log("error found ",error)
+  try {
+    const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
+    const data = await response.json();
+    console.log(data.pets)
+    document.getElementById("spin").style.display = "block";
+    display_all_pets(data.pets);
+  }
+  catch (error) {
+    console.log("error found ", error)
   }
 }
 
@@ -165,7 +166,8 @@ const display_all_pets = (pets) => {
              
              <div class="mt-6 flex justify-between items-center p-3">
              <button class="btn rounded-full like" onclick="liked_pet('${p.image}')"><i class="fa-regular fa-thumbs-up"></i></button>
-           <div class="flex justify-between items-center gap-3">  <button class="btn rounded text-[#0E7A81] adopt" onclick="adopted(this)" id=""  >Adopt</button>
+           <div class="flex justify-between items-center gap-3">  
+           <button class="btn rounded text-[#0E7A81] adopt" onclick="adopted(${p.petId})" id="adopt-${p.petId}" >Adopt</button>
            <button class="btn rounded text-[#0E7A81]"  onclick="description('${p.petId}')" >Details</button>
            </div>
              </div> 
@@ -182,7 +184,7 @@ const display_all_pets = (pets) => {
 all_pets();
 
 const sort = async () => {
-  
+
   const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
   const data = await response.json();
   console.log(data.pets[0].price)
@@ -194,8 +196,8 @@ const sort = async () => {
     console.log(data.pets[i - 1].price)
   }
 
-    
-  
+
+
 
 
 
@@ -225,7 +227,7 @@ const sort = async () => {
      
      <div class="mt-6 flex justify-between items-center p-3">
      <button class="btn rounded-full like" onclick="liked_pet('${pet.image}')"><i class="fa-regular fa-thumbs-up"></i></button>
-   <div class="flex justify-between items-center gap-3">  <button class="btn rounded text-[#0E7A81] adopt" onclick="adopted(this)" id="" >Adopt</button>
+   <div class="flex justify-between items-center gap-3">  <button class="btn rounded text-[#0E7A81] adopt" onclick="adopted(${pet.petId})" id="adopt-${pet.petId}" >Adopt</button>
    <button class="btn rounded text-[#0E7A81]" id="details" onclick="description('${pet.petId}')">Details</button>
    </div>
      </div> 
@@ -283,41 +285,22 @@ const description = async (id) => {
 
 }
 
-const adopted = async (button) => {
-  const x = document.getElementById("adopt_modal");
-  x.innerHTML = '';
-  x.showModal();
+const adopted = async (id) => {
+  my_modal_1.showModal();
 
-  const div = document.createElement("div");
 
-  div.innerHTML = `
-                <div class="modal-box flex flex-col justify-between items-center">
-                    <h1 class="text-5xl font-extrabold">Congrats!</h1>
-                    <h3>Adoption Process is start for Your Pet</h3>
-                    <div id="countdown-container" class="countdown font-mono text-6xl">
-                        <span style="--value:3;">3</span>
-                    </div>
-                  
-                </div>
-            `;
+  console.log(id);
 
-  x.appendChild(div);
-
-  let counter = 3;
-  const countdownContainer = document.getElementById("countdown-container");
-
+  let countDown = 3;
+  document.getElementById('count-down').innerText = countDown;
   const intervalId = setInterval(() => {
-    counter -= 1;
-
-    countdownContainer.innerHTML = `
-                    <span style="--value:${counter};" class="text-4xl">${counter}</span>
-                `;
-
-    if (counter <= 0) {
+    countDown--;
+    document.getElementById('count-down').innerText = countDown;
+    if (countDown <= 0) {
       clearInterval(intervalId);
-      x.close();
-      button.disabled = true;
-      button.innerText = "Adopted";
+      my_modal_1.close();
+      document.getElementById(`adopt-${id}`).disabled = true;
+      document.getElementById(`adopt-${id}`).innerText = "Adopted";
     }
   }, 1000);
 

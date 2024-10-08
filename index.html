@@ -20,6 +20,7 @@
         }
       }
     }
+    
   </script>
 </head>
 <body class="">
@@ -67,7 +68,7 @@
               </ul>
             </div>
             <div class="navbar-end">
-              <a class="btn">Button</a>
+              <a class=""><a href=""><img src="./assets/icons8-male-user-50.png" alt=""></a></a>
             </div>
           </div>
 
@@ -97,6 +98,7 @@
         <div class=" w-[30%] mx-auto" id="best_friend">
           <div class="loading loading-bars loading-lg hidden p-10 " id="spin"></div>
         </div>
+       
         
         <div class="grid grid-cols-4 ">
             
@@ -114,7 +116,15 @@
 <dialog id="detail_modal">
  
 </dialog>
-<dialog id="adopt_modal">
+<!-- Open the modal using ID.showModal() method -->
+<dialog id="my_modal_1" class="modal flex flex-col justify-center items-center">
+  <div class="modal-box flex flex-col justify-center items-center">
+    <img src="./assets/icons8-jewel-100.png" alt="" class="">
+    <h3 class="text-6xl font-bold mb-2">Congrats!</h3>
+    <h3 class="mb-3">Your Adoption process Started</h3>
+    <p id="count-down" class="py-4 text-6xl"></p>
+  </div>
+</dialog>
  <div class="countdown-container">
 
  </div>
@@ -122,27 +132,30 @@
       </main>
 
       <footer class="flex lg:flex-row flex-col justify-between items-center bg-black lg:p-20 text-white">
-        <div class="w-[30%]">
-            <h1 class="text-white font-extrabold text-3xl flex justify-start gap-2"><img src="./assets/logo.webp" alt="">Peddy</h1>
-            <p class="font-medium text-lg text-[rgba(255, 255, 255, 0.9)]">Location: av. Washington 165, NY CA 54003<br>
+        <div class="w-[40%] ">
+            <h1 class="text-white font-extrabold text-3xl flex justify-start items-center mb-2 gap-2"><img src="./assets/logo.webp" alt="" class="w-[10%] h-[10%]">Peddy</h1>
+            <p class="font-normal text-sm text-[#FFFFFFE6]/70">Location: av. Washington 165, NY CA 54003<br>
                 Phone: +31 85 964 47 25 <br>
                 Email: info@yourdomain.com <br>
                 Openings hours: 9.00 AM - 5.00 PM</p>
+                <img src="./assets/Frame 30.png" alt="" class="mt-4">
         </div>
 
-        <div class="flex justify-between items-center w-[40%]">
-            <div >
+        <div class="flex flex-col md:flex-row justify-between items-center lg:w-[70%] w-full">
+            <div class="mt-8">
               <h2 class="font-bold text-lg mb-2">Useful Links</h2>
-              <h5>Home</h5>
-              <h5>About Us</h5>
-              <h5>Animals</h5>
-              <h5>Foundation</h5>
-              <h5>Contact</h5>
+              <h5 class="text-[#FFFFFFE6]/70">Home</h5>
+              <h5 class="text-[#FFFFFFE6]/70">About Us</h5>
+              <h5 class="text-[#FFFFFFE6]/70">Animals</h5>
+              <h5 class="text-[#FFFFFFE6]/70">Foundation</h5>
+              <h5 class="text-[#FFFFFFE6]/70">Contact</h5>
             </div>
-            <div>
+            <div class="flex flex-col w-[50%]">
                 <h1>Drop a Message</h1>
-                <input type="email" placeholder="email" class="input input-bordered bg-[rgba(255, 255, 255, 0.05)]" required />
+                <input type="email" placeholder="email" class="input input-bordered bg-[#FFFFFF0D]/30 mt-4" required />
+                <button class="btn bg-[#0E7A81] text-white mt-3 border-none"> Subscribe </button>
             </div>
+            
         </div>
 
       </footer>
