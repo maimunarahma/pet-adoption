@@ -14,6 +14,7 @@
    <li> <b> Responsive Design: </b> Optimized for desktop, tablet and mobile devices. </li>
 </ul>
 
+   
 <h2 id="technologies" style="font-weight: bolder;">💻Skill Used</h2>
 - HTML <br>
 - Tailwind CSS <br>
