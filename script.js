@@ -70,7 +70,7 @@ const pet_card = (data) => {
 
 
       div.innerHTML = `
-        <div class="card  border-2 rounded-lg p-3">
+        <div class="card h-[450px] border-2 rounded-lg p-3">
   <figure>
     <img
       src="${x.image}"
