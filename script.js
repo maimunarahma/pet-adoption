@@ -27,17 +27,27 @@ const display_btns = async (pets) => {
     console.log(pet.category)
     btn.innerHTML = `
    
-      <button class="flex justify-center gap-2 items-center  p-2  border-2  rounded-md text-xl font-bold" onclick="spinner('${pet.category}')" id="pet_type"><img src="${pet.category_icon}" class="w-[30%]">${pet.category}</button>
+      <button class="flex justify-center gap-2 items-center  p-2  border-2  rounded-md text-xl font-bold" onclick="spinner('${pet.category}')" id="pet_type-${pet.category}"><img src="${pet.category_icon}" class="w-[30%]">${pet.category}</button>
     
       `
     container.appendChild(btn)
   })
 }
-
+let activebtn=null;
 const spinner = (category) => {
-
+ 
+  const clickbtn=document.getElementById(`pet_type-${category}`);
+  
   document.getElementById("spin").style.display = "block";
-  show_pets(category)
+  if(activebtn && activebtn!==clickbtn){
+    activebtn.style.background=""
+     activebtn.style.border=""
+  }
+  clickbtn.style.background = "rgba(14, 122, 129, 0.1)";
+  clickbtn.style.border = "1px solid rgb(14, 122, 129)"; 
+ show_pets(category)
+ activebtn=clickbtn;
+  
 }
 const show_pets = async (category) => {
   try {
@@ -185,7 +195,7 @@ const display_all_pets = (pets) => {
 //    loding
 all_pets();
 
-const sort = async () => {
+const sort = async (category) => {
   document.getElementById("spin").style.display = "block";
      document.getElementById("card").innerText=""
   setTimeout(()=>{
@@ -211,7 +221,17 @@ const sort = async () => {
 
 
   console.log(prices)
+  // if (category) {
+  //  
+  //   sortedPets = pets.filter(pet => pet.category === category)
+  //                    .sort((a, b) => b.price - a.price);
+  //                    console.log(sortedPets)
+                     
+  // }
+  
+  
   pets.sort((a, b) => b.price - a.price);
+  
   pets.forEach((pet) => {
     console.log(`Name: ${pet.pet_name}, Price: ${pet.price}`);
   })
