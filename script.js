@@ -26,8 +26,10 @@ const display_btns = async (pets) => {
     btn.classList.add = ("btn");
     console.log(pet.category)
     btn.innerHTML = `
-      <button class="flex justify-center gap-2 items-center w-[70%] p-2 lg:w-[35%] border-2  rounded-md text-xl font-bold" onclick="spinner('${pet.category}')" id="pet_type"><img src="${pet.category_icon}" class="w-[30%]">${pet.category}</button>
-     `
+   
+      <button class="flex justify-center gap-2 items-center  p-2  border-2  rounded-md text-xl font-bold" onclick="spinner('${pet.category}')" id="pet_type"><img src="${pet.category_icon}" class="w-[30%]">${pet.category}</button>
+    
+      `
     container.appendChild(btn)
   })
 }
